@@ -1,9 +1,9 @@
 #!/bin/sh
-docker login -e $DOCKER_EMAIL -u $DOCKER_USER -p $DOCKER_PASS
+echo "$DOCKER_PASS" | docker login -u "$DOCKER_USER" --password-stdin
 if [ "$TRAVIS_BRANCH" = "master" ]; then
     TAG="latest"
 else
     TAG="$TRAVIS_BRANCH"
 fi
-docker build -f Dockerfile -t "strazardatacwidstrom/cicd-buzz":$TAG .
-docker push "strazardatacwidstrom/cicd-buzz"
+docker build -f Dockerfile -t $TRAVIS_REPO_SLUG:$TAG .
+docker push $TRAVIS_REPO_SLUG
