@@ -5,5 +5,5 @@ if [ "$TRAVIS_BRANCH" = "master" ]; then
 else
     TAG="$TRAVIS_BRANCH"
 fi
-docker build -f Dockerfile -t "strazardatacwidstrom/cicd-buzz/":$TAG .
-docker push "strazardatacwidstrom/cicd-buzz/"
+docker build -f Dockerfile -t "strazardatacwidstrom/cicd-buzz":$TAG .
+docker push "strazardatacwidstrom/cicd-buzz"
